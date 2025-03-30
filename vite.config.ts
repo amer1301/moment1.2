@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  server: {
+    open: true,  // Öppnar webbläsaren automatiskt vid start
+  },
   build: {
-    outDir: 'public/dist',
+    outDir: 'dist',  // Utdata-katalog för byggfiler
   },
 });
