@@ -1,20 +1,24 @@
-/**
- *  Demo-app med Express
- */
-
-const express = require("express");
+const express = require('express');
 const app = express();
-const port = 3000;
+const path = require('path');
 
-app.set("view engine", "ejs"); //view engine: EJS
-app.use(express.static("public")); //statiska filer i katalog "public"
+// För att använda EJS som template engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// Routing
-app.get("/", (req, res) => {
-    res.render("index");
+// Serve static files, som t.ex. JavaScript och CSS
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rendera index.ejs
+app.get('/', (req, res) => {
+    const courses = [
+        { code: 'dt057', name: 'Webbutveckling I', progression: 'A', syllabus: 'https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT057G/' },
+        { code: 'dt084g', name: 'Introduktion till programmering i JavaScript', progression: 'A', syllabus: 'https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT084G/' },
+    ];
+    res.render('index', { courses });
 });
 
-// Starta
-app.listen(port, () => {
-    console.log("Server started on port: " + port);
+// Starta servern
+app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
 });
