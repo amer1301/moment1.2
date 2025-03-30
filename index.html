@@ -9,7 +9,14 @@
 <body>
     <h1>Hantera kurser</h1>
 
+    <section class="chosenCourses">
+        <h2>Dina tillagda kurser:</h2>
+        <ul id="userCourseList"></ul>
+        </section>
+
     <!-- Formulär för att lägga till ny kurs -->
+     <section class="addManually">
+        <h2>Skriv in din avklarade kurs manuellt enligt nedan eller välj från den färdiga listan nedan</h2>
     <form id="courseForm">
         <label for="code">Kurskod:</label>
         <input type="text" id="code" required>
@@ -29,9 +36,14 @@
         <br>
         <button type="submit">Lägg till kurs</button>
     </form>
+</section>
 
     <!-- Listan som visar kurser -->
-    <h2>Kurser:</h2>
-    <ul id="courseList"></ul> <!-- Listan fylls dynamiskt -->
+     <section class="listOfOptions">
+    <h2>Färdiga kursalternativ</h2>
+    <ul id="courseList"></ul>
+</section>
+
+
 </body>
 </html>
