@@ -1,21 +1,17 @@
 {
-  "name": "express",
+  "name": "moment1.2",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "vite": "^6.2.3"
+    "vite": "^4.0.0",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9",
-    "typescript": "^5.8.2"
+    "nodemon": "^3.1.9"
   }
 }

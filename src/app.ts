@@ -1,28 +1,47 @@
-import { CourseInfo, addCourse, renderCourses } from './courses';
+import { CourseInfo, addCourse, renderCourses, getCoursesFromLocalStorage, saveCoursesToLocalStorage } from './courses';
 
-document.getElementById('courseForm')?.addEventListener('submit', (event: Event) => {
+// Förifyllda exempelkurser som används om inga kurser finns i localStorage
+const defaultCourses: CourseInfo[] = [
+    {
+        "code": "dt057g",
+        "coursename": "Webbutveckling I",
+        "progression": "A",
+        "syllabus": "https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT057G/"
+    },
+    // Lägg till dina andra kurser här
+];
+
+// När sidan laddas, hämtar vi kurser från localStorage och renderar
+window.onload = () => {
+    let courses = getCoursesFromLocalStorage();
+
+    // Om inga kurser finns i localStorage, använd standardlistan
+    if (courses.length === 0) {
+        courses = defaultCourses;
+        saveCoursesToLocalStorage(courses); // Spara dessa som standardkurser i localStorage
+    }
+
+    renderCourses(courses);
+};
+
+// Hantera formulärsändning
+document.getElementById('courseForm')?.addEventListener('submit', (event) => {
     event.preventDefault();
-    
-    // Hämta input-värdena
+
+    // Hämta användarinmatning från formuläret
     const code = (document.getElementById('code') as HTMLInputElement).value;
     const name = (document.getElementById('name') as HTMLInputElement).value;
     const progression = (document.getElementById('progression') as HTMLSelectElement).value as 'A' | 'B' | 'C';
     const syllabus = (document.getElementById('syllabus') as HTMLInputElement).value;
-    
-    // Skapa ett nytt CourseInfo-objekt
+
     const newCourse: CourseInfo = {
         code,
-        name,
+        coursename: name,
         progression,
         syllabus
     };
-    
-    // Lägg till kursen
-    addCourse(newCourse);
-    
-    // Rendera kurser
-    renderCourses();
-});
 
-// När sidan laddas, rendera kurser från localStorage
-window.onload = renderCourses;
+    // Lägg till den nya kursen och rendera kurslistan
+    addCourse(newCourse);
+    renderCourses(getCoursesFromLocalStorage());
+});

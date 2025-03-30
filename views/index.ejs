@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moment 1.2</title>
-    <script type="module" src="/dist/main.js"></script> <!-- Byggda JavaScript-filen -->
+    <title>Kurslista</title>
+    <script type="module" src="app.ts"></script>
 </head>
 <body>
     <h1>Hantera kurser</h1>
 
+    <!-- Formulär för att lägga till ny kurs -->
     <form id="courseForm">
         <label for="code">Kurskod:</label>
         <input type="text" id="code" required>
@@ -29,7 +30,8 @@
         <button type="submit">Lägg till kurs</button>
     </form>
 
+    <!-- Listan som visar kurser -->
     <h2>Kurser:</h2>
-    <ul id="courseList"></ul> <!-- Lista som fylls med kurser -->
+    <ul id="courseList"></ul> <!-- Listan fylls dynamiskt -->
 </body>
 </html>
