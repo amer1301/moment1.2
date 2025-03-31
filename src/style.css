@@ -81,3 +81,83 @@ transform: scale(1.1);
         margin-left: 5em;
     }
   }
+
+  @media (max-width: 900px) {
+    #courseForm {
+        font-size: 1em;
+    }
+
+    #userCourseList {
+        font-size: 1em;
+      }
+
+      #courseList {
+        font-size: 1em;
+            button {
+margin-left: 1em;
+      }
+  }
+
+  @media (max-width: 655px) {
+    #name {
+        width: 11.6em;
+      }
+
+      #code {
+        padding: 0.2em 1.2em;
+      }
+
+      #syllabus {
+        width: 8em;
+      }
+  }
+
+  @media (max-width: 375px) {
+    h1 {
+        font-size: 1.7em;
+        margin-bottom: 1.8em;
+    }
+    h2 {
+        font-size: 1.2em;
+      }
+
+      #userCourseList {
+        font-size: 0.8em;
+        line-height: 1.8em;
+      }
+
+      #courseList {
+        font-size: 0.8em;
+        button {
+            padding: 0.2em 0.6em;
+            border-radius: 5px;
+            margin-left: 0.1em;
+            font-size: 1em;
+          }
+      }
+
+      #courseForm {
+        font-size: 0.8em;
+        line-height: 2.2em;
+        
+        button {
+            margin-left: 0.1em;
+            margin-top: 0.7em;
+            font-size: 1em;
+        }
+
+        #name {
+            width: 11.8em;
+          }
+
+          #syllabus {
+            width: 8.8em;
+          }
+
+          button {
+            padding: 0.2em 0.6em;
+            border-radius: 5px;
+          }
+  }
+}
+  }
