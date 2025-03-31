@@ -5,7 +5,6 @@ export interface CourseInfo {
     syllabus: string;    // Länk till kursplan
 }
 
-// Funktion för att hämta kurser från localStorage
 export function getCoursesFromLocalStorage(): CourseInfo[] {
     const storedCourses = localStorage.getItem('courses');
     if (storedCourses) {
@@ -15,7 +14,6 @@ export function getCoursesFromLocalStorage(): CourseInfo[] {
     }
 }
 
-// Funktion för att spara kurser till localStorage
 export function saveCoursesToLocalStorage(courses: CourseInfo[]): void {
     localStorage.setItem('courses', JSON.stringify(courses)); // Spara kurser som en JSON-sträng
 }

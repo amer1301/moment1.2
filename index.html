@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/style.css">
     <title>Kurslista</title>
-    <script type="module" src="/src/app.ts"></script> <!-- Uppdaterad sökväg till app.ts -->
+    <script type="module" src="/src/app.ts"></script>
 </head>
 <body>
+    <main>
     <h1>Hantera kurser</h1>
 
     <section class="chosenCourses">
         <h2>Dina tillagda kurser:</h2>
-        <ul id="userCourseList"></ul>
+        <div id="userCourseList"></div>
         </section>
 
-    <!-- Formulär för att lägga till ny kurs -->
      <section class="addManually">
         <h2>Skriv in din avklarade kurs manuellt enligt nedan eller välj från den färdiga listan nedan</h2>
     <form id="courseForm">
@@ -38,12 +39,11 @@
     </form>
 </section>
 
-    <!-- Listan som visar kurser -->
      <section class="listOfOptions">
     <h2>Färdiga kursalternativ</h2>
     <ul id="courseList"></ul>
 </section>
-
+</main>
 
 </body>
 </html>

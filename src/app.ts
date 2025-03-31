@@ -108,12 +108,15 @@ const defaultCourses: CourseInfo[] = [
     } 
 ]; 
 
-let userAddedCourses: CourseInfo[] = [];  // För att hålla användartilläggda kurser
+let userAddedCourses: CourseInfo[] = [];
 
-// När sidan laddas, hämtar vi kurser från localStorage och renderar
+// När sidan laddas, hämtas kurser från localStorage och renderar
 window.onload = () => {
-    let courses = getCoursesFromLocalStorage();
-    let allCourses = [...defaultCourses, ...courses];  // Kombinera standard och användartilläggda kurser
+    // Hämta kurser från localStorage (användarkurser)
+    userAddedCourses = getCoursesFromLocalStorage();
+
+    // Kombinera standardkurser och användartilläggda kurser
+    let allCourses = [...defaultCourses, ...userAddedCourses];
 
     renderDefaultCourses(allCourses);  // Ropa på renderDefaultCourses för att visa både default- och användartilläggda kurser
     renderUserAddedCourses(userAddedCourses);  // Rendera användartilläggda kurser
@@ -138,7 +141,7 @@ document.getElementById('courseForm')?.addEventListener('submit', (event) => {
     // Lägg till den nya kursen i användartilläggda kurser om den inte redan finns
     if (!isCourseCodeTaken(newCourse.code)) {
         userAddedCourses.push(newCourse);  // Lägg till den manuellt inlagda kursen
-        saveCoursesToLocalStorage(userAddedCourses);  // Spara i localStorage om du vill ha kvar den mellan sessioner
+        saveCoursesToLocalStorage(userAddedCourses);  // Spara i localStorage
         renderUserAddedCourses(userAddedCourses);  // Rendera om användartilläggda kurser
     } else {
         alert('Kurskoden är redan använd!');
@@ -150,6 +153,7 @@ function addToUserAdded(course: CourseInfo) {
     if (!userAddedCourses.some(existingCourse => existingCourse.code === course.code)) {
         userAddedCourses.push(course);
         renderUserAddedCourses(userAddedCourses);
+        saveCoursesToLocalStorage(userAddedCourses);  // Spara de uppdaterade användartilläggda kurser till localStorage
     }
 }
 
@@ -159,7 +163,7 @@ function renderUserAddedCourses(courses: CourseInfo[]) {
     userCourseList.innerHTML = ''; // Rensa listan innan den fylls
 
     if (courses.length === 0) {
-        userCourseList.innerHTML = '<li>Inga kurser tillagda än.</li>';
+        userCourseList.innerHTML = '<p>Inga kurser tillagda än.</p>';
     } else {
         courses.forEach(course => {
             const listItem = document.createElement('li');
